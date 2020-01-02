@@ -1,0 +1,61 @@
+h1{
+    text-align: center;
+    padding-bottom: 20px;
+}
+h2{
+    text-align: center;
+    padding-right: 77px;
+}
+#home_button{
+    text-align: center;
+}
+.home_coffee_image{
+    width:500px;
+    hight:750px;
+    padding-top: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+ul{
+    width: 100%;
+    display: table;
+}
+li{
+    list-style: none;
+    float:left;
+    text-align: center;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+li > button{
+    margin: 0;
+}
+.order_drink{
+    margin-right: 10px;
+    font-size: 14px;
+    width:170px;
+    height: 20px;
+    padding: 0px;
+    font-size: 13px;
+    margin-right: 0px;
+}
+.image{
+    width:170px;
+    height:170px;
+}
+#adbutton_button{
+    text-align: center;
+}
+#adbutton_button input{
+    margin-right: 15px;
+}
+label{
+    display:inline-block;
+    width: 80px;
+    margin-bottom: 20px;
+}
+#add_button input{
+    margin-right: 10px;
+    margin-top: 10px;
+}
