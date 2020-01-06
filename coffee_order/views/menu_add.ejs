@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>제품 추가</title>
+    </head>
+    <body>
+            <li class="post">
+                <form class="post" action="/menu_add" method="post">
+                    <div> 제품번호 : <input type="text" name="num" placeholder="Coffee1"></div>
+                    <div> 제품명 : <input type="text" name="name" placeholder="아메리카노"></div>
+                    <div> 가격 : <input type="text" name="price" placeholder="4000"></div>
+                    <input type="submit" value = "등록">
+                    <input type="button" value="이전" onclick="location.href='admenu'">
+                </form>
+                <section class="showResult"></section>
+            </li>
+
+    </body>
+</html>

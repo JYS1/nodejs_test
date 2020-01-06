@@ -7,6 +7,8 @@ var passport = require('passport')
 var LocalStrategy = require('passport-local').Strategy
 var session = require('express-session')
 var flash = require('connect-flash')
+var cookieParser = require('cookie-parser');
+
 
 app.listen(3000, function(){
     console.log("Start! express server on port 3000")
@@ -25,6 +27,7 @@ app.use(session ({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(cookieParser());
 app.use(flash());
 
 
