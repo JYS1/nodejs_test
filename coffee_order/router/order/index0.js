@@ -21,12 +21,11 @@ router.get('/:id/:price', function(req,res) {
 }
 
 
+
 if(!cart[id]) {
     cart[id] = 0;
 }
-
     cart[id] = parseInt(cart[id]) + 1;
-    
     res.cookie('cart', cart);
     res.redirect('/order');
 

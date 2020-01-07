@@ -10,7 +10,7 @@ router.get('/', function(req,res) {
     res.clearCookie('cart');
     res.send(`
         <h2>주문완료</h2>
-        <a href="/order">돌아가기</a>
+        <a href="/cookie">돌아가기</a>
         `)
 });
 

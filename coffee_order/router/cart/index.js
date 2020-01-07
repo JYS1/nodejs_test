@@ -9,16 +9,20 @@ router.use(cookieParser());
 
 router.get('/', function(req, res) {
     var cart = req.cookies.cart;
+    var amount = 0;
+
     if(!cart) {
         res.send('비어있습니다.');
     } else {
         var output = '';
         for(var id in cart) {
-            output += `<li>${id} : ${cart[id]} 개 주문</li>`;
+            output += `<li>${id} : ${cart[id]} 개 주문 가격</li>`;
         }
+        
     }
     res.send(`<h1>Cart</h1>
         <ul>${output}</ul>
+        <ul>${amount}</ul>
         <a href="/order">Orders List</a><br>
         <a href="/remove">주문 하기</a>`
         )
