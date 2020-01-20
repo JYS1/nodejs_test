@@ -14,10 +14,10 @@ app.listen(3000, function(){
     console.log("Start! express server on port 3000")
 })
 
-app.use(express.static('public'))
+app.use(express.static('public'))   //public 파일 안에 파일들은 정적으로 사용한다는것.
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:true}))
-app.set('view engine', 'ejs')
+app.use(bodyParser.urlencoded({extended:true})) //body에 있는 영어 제외한 언어들 + 기호를 인코딩해서 보여지게해주는것.
+app.set('view engine', 'ejs')   // view 엔진을 ejs 파일로 한다고 설정
 app.use(cors())
 
 app.use(session ({

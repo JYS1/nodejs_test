@@ -10,6 +10,7 @@ var cookie = require('./cookie/index')
 var cart = require('./cart/index')
 var remove = require('./remove/index')
 var cart_test = require('./cart_test/index')
+var remove_order = require('./remove_order/index')
 
 
 
@@ -20,6 +21,7 @@ router.use('/menu_add', menu_add)
 router.use('/cookie', cookie)
 router.use('/cart', cart)
 router.use('/remove', remove)
+router.use('/remove_order', remove_order)
 router.use('/cart_test', cart_test)
 
 

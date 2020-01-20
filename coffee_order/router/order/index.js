@@ -20,13 +20,21 @@ router.get('/:id/:price', function(req,res) {
         var cart = {};
 }
 
+    if(req.cookies.amount) {
+        var amount = req.cookies.amount;
+    } else {
+        var amount = {};
+    }
+
 
 if(!cart[id]) {
     cart[id] = 0;
 }
 
     cart[id] = parseInt(cart[id]) + 1;
+    amount[id] = parseInt(price);
     
+    res.cookie('amount', amount);
     res.cookie('cart', cart);
     res.redirect('/order');
 

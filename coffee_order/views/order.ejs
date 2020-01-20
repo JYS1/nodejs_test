@@ -11,21 +11,17 @@
         <h1>메뉴 선택</h1>
         <div class="left">
         <form>
-            <script>
-            var menu = {
-                1:{title : '아메리카노', price : '4000'},
-                2:{title : '카페라떼' ,  price : '5000'}
-            };
-            </script>
 
             <ul>
                 <h2>커피</h2>
-                    <li><img src="coffee_image/아메리카노.jpg"  class="image" value="4000" onclick="location.href='/order/아메리카노/4000}'"><br>
+                    <li><img src="coffee_image/아메리카노.jpg"  class="image" value="4000"
+                        onclick="location.href='/order/아메리카노/4000'"><br>
                         <input type="button" class="order_drink" name="4000" value="아메리카노 / 4000" disabled></li>
                     <li><img src="coffee_image/카페라떼.jpg" class="image" onclick="location.href='/order/카페라떼/5000}'"><br>
                         <input type="button" class="order_drink" name="coffee2" value="카페라떼 / 5000" ></li>
                     <li><img src="coffee_image/카라멜마키아또.jpg" class="image"><br>
-                        <input type="button" class="order_drink" name="coffee3" value="카라멜 마키아또" onclick="location.href='/order/캬라멜 마기아또}'"></li>
+                        <input type="button" class="order_drink" name="coffee3" value="카라멜 마키아또"
+                        onclick="location.href='/order/캬라멜 마기아또}'"></li>
                     <li><img src="coffee_image/카푸치노.jpg" class="image"><br>
                         <input type="button" class="order_drink" name="coffee4" value="카푸치노" onclick="location.href='/order/카푸치노}'"></li>
                     <li><img src="coffee_image/카페모카.jpg" class="image"><br>
@@ -36,7 +32,8 @@
             <ul>
                 <h2>음료</h2>
                     <li><img src="coffee_image/아포가토스무디.jpg" class="image"><br>
-                        <input type="button" class="order_drink" name="drink1" value="아포가토 스무디" onclick="location.href='/order/아포가토 스무디}'"></li>
+                        <input type="button" class="order_drink" name="drink1" value="아포가토 스무디"
+                        onclick="location.href='/order/아포가토 스무디}'"></li>
                     <li><img src="coffee_image/망고스무디.jpg" class="image"><br>
                         <input type="button" class="order_drink" name="drink2" value="망고 스무디"onclick="location.href='/order/망고 스무디}'"></li>
                     <li><img src="coffee_image/제주호두당근스무디.jpg" class="image"><br>
@@ -65,16 +62,35 @@
         </div>
         <div class="right">
             <div class="get_all">
-                <input type="button" value="주문현황" onclick="location.href='cart'">
+                <button>주문 현황</button>
                 <section class="showResult"></section>
             </div>
 
-            <input type="button" value="결 제" onclick="location.href='pay.html'"><br>
+            <input type="button" value="결 제" onclick="location.href='/cart'"><br>
             <input type="button" value="리셋" onclick="location.href='/remove'">
         </div>
         </section>
 
         <script>
+        document.querySelector('.right').addEventListener('click', function(e) {
+            let url, method, data, fn;
+            const target = e.target;
+            const div = taget.closest('div');
+            const showResult = div.querySelector(".showResult");
+            const type = div.className;
+
+            switch(type) {
+                case "get_all"
+                url = "/cart"
+                method="GET";
+                fn = function(result) {
+                    if(result.result === 1) {
+                        let
+                    }
+                }
+            }
+        })
+
 
         </script>
     </body>

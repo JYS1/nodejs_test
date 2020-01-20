@@ -8,25 +8,29 @@ var connection = mysql.createConnection({
     port : '3306',
     user : 'root',
     password : '1234',
-    database : 'coffee'
+    database : 'coffee',
+    dateStrings: 'date' // 날짜가 이상하게 나올때 재대로 보이게 하는 방법.
 })
 
 connection.connect();
 
-router.get('/', function(req, res) {
+router.get('/list', function(req, res) {
     res.render('menu_add.ejs')
 })
 
-router.post('/', function(req,res) {
-    var num = req.body.num;
-    var name = req.body.name;
-    var price = req.body.price;
+router.get('/', function(req,res) {
+    var responseData = {}
 
-    var sql = {num, name, price};
-    var query = connection.query('insert into menu set ?', sql, function(err, rows) {
-        if(err) throw err
-        return res.render('admenu.ejs')
-    })
+    var query = connection.query('select * from corder', function(err, rows) {
+       if(err) throw err;
+       if(rows.length) {
+           responseData.result = 1;
+           responseData.data = rows;
+       } else {
+           responseData.result = 0;
+       }
+       res.json(responseData)
+   })
 })
 
 

@@ -2,19 +2,64 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>제품 추가</title>
+        <title>주문 현황</title>
     </head>
     <body>
-            <li class="post">
-                <form class="post" action="/menu_add" method="post">
-                    <div> 제품번호 : <input type="text" name="num" placeholder="Coffee1"></div>
-                    <div> 제품명 : <input type="text" name="name" placeholder="아메리카노"></div>
-                    <div> 가격 : <input type="text" name="price" placeholder="4000"></div>
-                    <input type="submit" value = "등록">
-                    <input type="button" value="이전" onclick="location.href='admenu'">
-                </form>
-                <section class="showResult"></section>
-            </li>
+        <section class="showWrap">
+                <div class="get_all">
+                    <button>주문 확인</button>
+                    <section class="showResult"></section>
+                </div>
+                <input type="button" value="이전" onclick="location.href='../admenu'">
 
+        </section>
+        <script>
+            document.querySelector('.showWrap').addEventListener('click', function(e) {
+                let url, method, data, fn;
+                const target = e.target;
+                const div = target.closest('div');
+                const showResult = div.querySelector(".showResult");
+                const type = div.className;
+
+                if(target.tagName !== "BUTTON") return;
+
+                switch (type) {
+                    case "get_all":
+                        url = "/menu_add";
+                        method = "GET";
+                        fn = function(result) {
+                            if(result.result === 1) {
+                                let no = result.data.reduce(function(pre,next) {
+                                    pre += "<li> 주문번호 : " + next.no + "/ 주문내용 : " + next.content + "/ 주문 가격 : "+ next.amount + " 원 " +"/ 주문 시간 : " + next.time +"</li>"
+                                    return pre;
+                                },"");
+                                showResult.innerHTML = "<ul>" + no + "</ul>";
+                            } else {
+                                showResult.innerHTML = "list not found";
+                            }
+                        }
+                        break;
+                    }sendAjax(url, method, data, fn);
+                });
+
+                function sendAjax(url, method, data, fn) {
+                const xhr = new XMLHttpRequest();
+                xhr.open(method, url);
+
+                if(data) {
+                    data = JSON.stringify(data);
+                    xhr.setRequestHeader('Content-Type', "application/json");
+                } else {
+                    data = null;
+                }
+
+                xhr.send(data);
+
+                xhr.addEventListener('load', function() {
+                    const result = JSON.parse(xhr.responseText);
+                    fn(result);
+                });
+            }
+        </script>
     </body>
 </html>

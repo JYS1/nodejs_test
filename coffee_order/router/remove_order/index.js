@@ -8,11 +8,7 @@ router.use(cookieParser());
 router.get('/', function(req,res) {
     var cart = req.cookies.cart;
     res.clearCookie('cart');
-    res.send(`
-        <h2>주문완료</h2>
-        <a href="/cookie">돌아가기</a>
-        
-        `)
+    res.redirect('/cookie');
 });
 
 module.exports = router;
